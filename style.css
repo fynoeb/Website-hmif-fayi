@@ -1,0 +1,537 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap");
+
+/* Navbar Styles */
+.navbar {
+    backdrop-filter: blur(10px); /* Efek blur */
+    -webkit-backdrop-filter: blur(10px); /* Efek blur untuk Safari */
+    background-color: rgba(248, 249, 250, 0.8); /* Warna bg-light dengan transparansi */
+    transition: background-color 0.3s ease; /* Transisi halus untuk warna latar belakang */
+}
+
+.navbar.scrolled {
+    background-color: rgba(248, 249, 250, 1); /* Latar belakang solid saat digulir */
+}
+.nav-item.dropdown {
+    position: relative;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.timeline {
+    --col-gap: 2rem;
+    --row-gap: 2rem;
+    --line-w: 0.25rem;
+    display: grid;
+    grid-template-columns: var(--line-w) 1fr;
+    grid-auto-columns: max-content;
+    column-gap: var(--col-gap);
+    list-style: none;
+    width: min(60rem, 90%);
+    margin-inline: auto;
+  }
+  
+  .timeline::before {
+    content: "";
+    grid-column: 1;
+    grid-row: 1 / span 20;
+    background: rgb(225, 225, 225);
+    border-radius: calc(var(--line-w) / 2);
+  }
+  
+  .timeline li:not(:last-child) {
+    margin-bottom: var(--row-gap);
+  }
+  
+  .timeline li {
+    grid-column: 2;
+    --inlineP: 1.5rem;
+    margin-inline: var(--inlineP);
+    grid-row: span 2;
+    display: grid;
+    grid-template-rows: min-content min-content min-content;
+  }
+  
+  .timeline li .date {
+    --dateH: 3rem;
+    height: var(--dateH);
+    margin-inline: calc(var(--inlineP) * -1);
+  
+    text-align: center;
+    background-color: var(--accent-color);
+  
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+  
+    display: grid;
+    place-content: center;
+    position: relative;
+  
+    border-radius: calc(var(--dateH) / 2) 0 0 calc(var(--dateH) / 2);
+  }
+  
+  .timeline li .date::before {
+    content: "";
+    width: var(--inlineP);
+    aspect-ratio: 1;
+    background: var(--accent-color);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2) 100%, transparent);
+    position: absolute;
+    top: 100%;
+  
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    right: 0;
+  }
+  
+  .timeline li .date::after {
+    content: "";
+    position: absolute;
+    width: 2rem; /* Ukuran lingkaran */
+    aspect-ratio: 1;
+    background: white !important; /* Warna putih untuk latar lingkaran */
+    border: 0.3rem solid var(--accent-color); /* Border warna sesuai garis timeline */
+    border-radius: 50%; /* Membentuk lingkaran */
+    top: 50%;
+    transform: translate(50%, -50%);
+    right: calc(100% + var(--col-gap) + var(--line-w) / 2);
+    z-index: 2 !important; /* Pastikan lingkaran berada di atas */
+  }
+  
+  
+  .timeline li .title,
+  .timeline li .descr {
+    background: var(--bgColor);
+    position: relative;
+    padding-inline: 1.5rem;
+  }
+  
+  .timeline li .title {
+    overflow: hidden;
+    padding-block-start: 1.5rem;
+    padding-block-end: 1rem;
+    font-weight: 500;
+  }
+  
+  .timeline li .descr {
+    padding-block-end: 1.5rem;
+    font-weight: 300;
+  }
+  
+  .timeline li .title::before,
+  .timeline li .descr::before {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 0.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    left: 50%;
+    border-radius: 50%;
+    filter: blur(4px);
+    transform: translate(-50%, 50%);
+  }
+  
+  .timeline li .title::before {
+    bottom: calc(100% + 0.125rem);
+  }
+  
+  .timeline li .descr::before {
+    z-index: -1;
+    bottom: 0.25rem;
+  }
+  
+  @media (min-width: 40rem) {
+    .timeline {
+      grid-template-columns: 1fr var(--line-w) 1fr;
+    }
+    .timeline::before {
+      grid-column: 2;
+    }
+    .timeline li:nth-child(odd) {
+      grid-column: 1;
+    }
+    .timeline li:nth-child(even) {
+      grid-column: 3;
+    }
+  
+    .timeline li:nth-child(2) {
+      grid-row: 2/4;
+    }
+  
+    .timeline li:nth-child(odd) .date::before {
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+      left: 0;
+    }
+  
+    .timeline li:nth-child(odd) .date::after {
+      transform: translate(-50%, -50%);
+      left: calc(100% + var(--col-gap) + var(--line-w) / 2);
+    }
+    .timeline li:nth-child(odd) .date {
+      border-radius: 0 calc(var(--dateH) / 2) calc(var(--dateH) / 2) 0;
+    }
+  }
+  
+  .credits {
+    margin-top: 1rem;
+    text-align: right;
+  }
+  
+  .credits a {
+    color: var(--color);
+  }
+  
+
+  /* visi misi */
+#tentang .visi-misi-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+#tentang .visi-misi-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #41516C; /* Warna teks judul */
+    margin-bottom: 1rem;
+}
+
+#tentang .visi-misi-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #f8f9fa; /* Warna latar kotak */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#tentang .visi-misi-content {
+    width: 50%;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+#tentang .visi-misi-content.visi {
+    border-right: 2px solid #eaeaea; /* Garis tengah */
+}
+
+#tentang .visi-misi-content h5 {
+    color: #41516C; /* Warna judul */
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+#tentang .visi-misi-content p,
+#tentang .visi-misi-content ul {
+    color: #333; /* Warna teks */
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+#tentang .visi-misi-content ul li {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    #tentang .visi-misi-box {
+        flex-direction: column;
+    }
+
+    #tentang .visi-misi-content.visi {
+        border-right: none;
+        border-bottom: 2px solid #eaeaea; /* Garis tengah di mobile */
+    }
+
+    #tentang .visi-misi-content {
+        width: 100%;
+    }
+}
+/* Style untuk container card divisi */
+/* Style untuk container card divisi */
+.card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease-in-out;
+  margin: 25px; /* Tambahkan margin untuk memberikan ruang di sekeliling card */
+}
+
+.card-img-top {
+  transition: filter 0.9s ease-in-out; /* Transisi filter untuk efek hover */
+  width: 100%;
+  height: 100%; /* Memastikan gambar memenuhi seluruh area card */
+  object-fit: cover; /* Pastikan gambar tetap terisi tanpa terdistorsi */
+  filter: brightness(100%); /* Gambar default terang */
+}
+
+/* Efek hover untuk mengubah gambar menjadi hitam putih dan gelap */
+.card:hover .card-img-top {
+  filter: grayscale(100%) brightness(40%); /* Gambar berubah menjadi hitam putih dan gelap */
+}
+
+/* Teks berada di atas gambar saat hover */
+.card-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; /* Teks default berwarna putih */
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Bayangan teks untuk keterbacaan */
+  z-index: 1; /* Pastikan teks berada di atas gambar */
+}
+
+/* Menampilkan teks saat hover */
+.card:hover .card-body {
+  opacity: 1; /* Tampilkan teks saat hover */
+  color: #f0f0f0; /* Warna teks terang saat hover */
+}
+
+/* Menambahkan sedikit efek untuk card saat di hover */
+.card:hover {
+  transform: scale(1.05); /* Efek zoom saat hover */
+  overflow: hidden; /* Menghindari gambar terpotong saat zoom */
+}
+
+/* Menebalkan nama divisi */
+.card-body .card-title {
+  font-weight: bold;
+}
+
+/* inti */
+:root {
+    --card-height: 300px;
+    --card-width: calc(var(--card-height) / 1.5);
+  }
+*{
+    box-sizing: border-box;
+}
+  .custom-card {
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 36px;
+    perspective: 2500px;
+    margin: 0 50px;
+    margin-top: 25px;
+    margin-bottom: 70px;
+    border-radius: 5px;
+  }
+.cover-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.wrapper{
+    transition: all 0.5s;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    border-radius: 5px;
+}
+.custom-card:hover .wrapper{
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow:2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow:2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    pointer-events: auto; 
+}
+.wrapper::before,
+.wrapper::after{
+    content: "";
+    opacity: 0;
+    width: 100%;
+    height: 80px;
+    transition: all 0.5s;
+    position: absolute;
+    left: 0;
+    border-radius: 5px;
+}
+.wrapper::before{
+    top: 0;
+    height: 100%;
+    background-image: linear-gradient(
+        to top,
+        transparent 46%,
+        rgba(12, 13, 19, 0.5)68%,
+        rgba(12, 13, 19) 97%
+    );
+    border-radius: 5px;
+}
+.wrapper::after{
+    bottom: 0;
+    opacity: 1;
+    background-image: linear-gradient(
+        to bottom,
+        transparent 46%,
+        rgba(12, 13, 19, 0.5) 68%,
+        rgba(12, 13, 19)97%
+    );
+    border-radius: 5px;
+}
+.custom-card:hover .wrapper::before,
+.wrapper::after{
+    opacity: 1;
+}
+.custom-card:hover .wrapper::after{
+    height: 120px;
+}
+.title {
+    width: 100%;
+    transition: transform 0.5s;
+}
+.custom-card:hover .title {
+    transform: translate3d(0%, -50px, 100px);
+}
+  .character {
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    position: absolute;
+    z-index: -1;
+  }
+  .custom-card:hover .character {
+    opacity: 1;
+    transform: translate3d(0%, -30%, 100px);
+  }
+  
+  
+ /* Style untuk scrollbar */
+::-webkit-scrollbar {
+  width: 16px; /* Lebar scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Warna latar track scrollbar */
+  border-radius: 8px; /* Membuat track dengan ujung melingkar */
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px; /* Membuat ujung scrollbar bulat */
+  background: linear-gradient(135deg, #1b2b54 25%, #04eaea 25%, #04eaea 50%, #1b2b54 50%, #1b2b54 75%, #04eaea 75%);
+  background-size: 40px 40px; /* Ukuran pola garis miring */
+  animation: zebra-scroll 2s linear infinite; /* Animasi berjalan terus */
+}
+
+/* Animasi pola garis miring bergerak */
+@keyframes zebra-scroll {
+  from {
+      background-position: 0 0;
+  }
+  to {
+      background-position: 40px 40px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+.section-header {
+  text-align: center;
+  margin: 0 auto;
+  padding: 40px 0;
+  font: 300 60px 'Oswald', sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+
+.contact-form {
+  backdrop-filter: blur(3px); /* Efek blur */
+  -webkit-backdrop-filter: blur(5px); /* Efek blur untuk Safari */
+  transition: background-color 0.3s ease; /* Transisi halus untuk warna latar belakang */
+}
+#contact {
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#contact .background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('backgorund-contact.jpeg');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) brightness(40%);
+  z-index: -1; /* Menempatkan overlay di bawah konten */
+}
+
+#contact .container {
+  position: relative;
+  z-index: 1; /* Membuat konten tampil di atas overlay */
+}
+#contact {
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#contact .background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('backgorund-contact.jpeg');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) brightness(40%);
+  z-index: -1; /* Menempatkan overlay di bawah konten */
+}
+
+#contact .container {
+  position: relative;
+  z-index: 1; /* Membuat konten tampil di atas overlay */
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center; /* Posisikan ikon di tengah */
+  align-items: center;
+  gap: 20px; /* Jarak antar ikon */
+}
+
+.social-icons a {
+  text-decoration: none; /* Menghilangkan garis bawah pada link */
+}
+
+.social-icons i {
+  font-size: 3rem; /* Ukuran ikon sosial media */
+  transition: transform 0.3s ease; /* Efek transisi */
+}
+
+.social-icons i:hover {
+  transform: scale(1.1); /* Membuat ikon sedikit lebih besar saat hover */
+}
+
+footer {
+  bottom: 0;
+}
