@@ -1,0 +1,21 @@
+{
+    "name": "HMIF UNAND",
+    "short_name": "HMIF UNAND",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "icons": [
+      {
+        "src": "logo-hmif-192.png",
+        "sizes": "192x192",
+        "type": "/png"
+      },
+      {
+        "src": "logo-hmif-512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  
